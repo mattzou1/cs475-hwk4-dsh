@@ -15,7 +15,7 @@ cmd_t chkBuiltin(char *cmd) {
 		return CMD_PWD;
 	else if (!strcmp(cmd, "history"))
 		return CMD_HIST;
-	else if (!strcmp(cmd, "echo"))
-		return CMD_ECHO;
+	// else if (!strcmp(cmd, "echo"))
+	// 	return CMD_ECHO;
 	return CMD_EXT;
 }
