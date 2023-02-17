@@ -15,7 +15,6 @@
 #include <err.h>
 #include <sys/stat.h>
 #include <string.h>
-#include "builtins.h"
 
 // TODO: Your function definitions (declarations in dsh.h)
 int is_empty(const char *s) {
