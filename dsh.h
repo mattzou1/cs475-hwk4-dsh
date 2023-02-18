@@ -8,4 +8,5 @@
 #define MAXBUF 256
 
 // TODO: Your function prototypes below
+int checkLastElement(char** terms);
 char** split(char* str, char* delim);

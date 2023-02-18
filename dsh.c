@@ -17,6 +17,8 @@
 #include <string.h>
 
 // TODO: Your function definitions (declarations in dsh.h)
+
+//checks to see if a string is empty
 int is_empty(const char *s) {
   while (*s != '\0') {
     if (!isspace((unsigned char)*s)){
@@ -27,10 +29,24 @@ int is_empty(const char *s) {
   return 1;
 }
 
+//checks to see if last element is an & sign
+int checkLastElement(char** terms){
+    int i = 0;
+    while(terms[i] != NULL){
+        i++;
+    }
+    if(strcmp(terms[i - 1], "&") == 0){
+        return 1;
+    }
+    return 0;
+}
+
+//splits string into array based off a delim
 char** split(char* str, char* delim){
     if(is_empty(str)){
         return NULL;
     }
+    //find length of array
     int numTokens = 1; 
     for(int i = 0; i < strlen(str); i++){
         if(str[i] == *delim){
@@ -38,19 +54,22 @@ char** split(char* str, char* delim){
         }
     }
     char **tokens = (char**)malloc((numTokens + 1) * sizeof(char*));
-    for (int i = 0; i < numTokens + 1; i++) {
-        tokens[i] = (char*) malloc(16 * sizeof(char));
+    //malloc all char*s inside tokens
+    for (int i = 0; i < numTokens; i++) {
+        tokens[i] = (char*) malloc(128 * sizeof(char));
     }
-    /* get the first token */
+
+    // get the first token 
     char *token = strtok(str, delim);
    
     int i = 0; 
-    /* walk through other tokens */
+    // walk through other tokens 
     while( token != NULL ) {
         strcpy(tokens[i], token);
         token = strtok(NULL, delim);
         i++;
     }
+    //NULL terminate last element
     tokens[i] = NULL;
     return tokens; 
 }
